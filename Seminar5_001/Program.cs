@@ -2,7 +2,6 @@
 Задача 31: Задайте массив из 12 элементов, заполненный случайными числами из промежутка [-9, 9]. Найдите сумму отрицательных и положительных элементов массива.
 Например, в массиве [3,9,-8,1,0,-7,2,-1,8,-3,-1,6] сумма положительных чисел равна 29, сумма отрицательных равна -20.
 */
-
 /*
 int[] arr = new int[12];
 int sum1 = 0;
@@ -70,7 +69,7 @@ foreach (var item in arr_tmp)
 {
     Console.Write(item + ", ");
 }
-*/
+/**/
 
 /*
 Задача 33: Задайте массив. Напишите программу, которая определяет, присутствует ли заданное число в массиве.
@@ -100,7 +99,7 @@ Random rnd = new Random();
 
 for (int i = 0; i < arr.Length; i++)
 {
-    arr[i] = rnd.Next(-1000, 1000);
+    arr[i] = rnd.Next(-10, 11);
 }
 foreach (var item in arr)
 {
@@ -110,19 +109,21 @@ Console.WriteLine();
 Console.WriteLine();
 
 int N = InputIntNumber("N");
-bool Flag_OK = false;
+// bool Flag_OK = false;
 
 for (int i = 0; i < arr.Length; i++)
 {
     if (N == arr[i])
     {
         Console.WriteLine("Присутствует число");
-        Flag_OK = true;
-        return;
+        // Flag_OK = true;
+        // break; // выход из цикла вложенного, Flag_OK - нужен
+        return; // выход из цикла вложенного, Flag_OK не нужен
     }
 }
-if(!Flag_OK) Console.WriteLine("отсутсутствует число");
-*/
+// if(!Flag_OK)
+    Console.WriteLine("отсутсутствует число");
+/**/
 
 /*
 Задача 35: Задайте одномерный массив из 123 случайных чисел. Найдите количество элементов массива, значения которых лежат в отрезке [10,99].
@@ -154,12 +155,14 @@ for (int i = 0; i < arr.Length; i++)
         cnt++;
 }
     Console.WriteLine(cnt);
-*/
+/**/
+
 /*
 Задача 37: Найдите произведение пар чисел в одномерном массиве. Парой считаем первый и последний элемент, второй и предпоследний и т.д. Результат запишите в новом массиве.
 [1 2 3 4 5] -> 5 8 3
 [6 7 3 6] -> 36 21
 */
+/*
 int InputIntNumber(string numberName)
 {
     Console.Write($"Input {numberName} integer number: ");
@@ -172,16 +175,50 @@ int InputIntNumber(string numberName)
     return number;
 }
 
-Console.WriteLine(cnt);
+Console.WriteLine("Найдите произведение пар чисел в одномерном массиве. Парой считаем первый и последний элемент," + 
+"\nвторой и предпоследний и т.д. Результат запишите в новом массиве." +
+"\nВведите длину массива N= ");
+int array_Length = InputIntNumber("N");
 
-int[] arr = new int[10];
+int[] array = new int[array_Length];
 Random rnd = new Random();
+
+for (int i = 0; i < array.Length; i++)
+{
+    array[i] = rnd.Next(-9,10);
+}
+foreach (var item in array)
+{
+    Console.Write(item + ", ");
+}
+Console.WriteLine("\nПолученный массив");
+
+int[] array_tmp = new int[array_Length/2];
+
+for (int i = 0; i < array.Length/2; i++)
+{
+    array_tmp[i] = array [i] * array[array.Length -1 -i];
+}
+foreach (var item in array_tmp)
+{
+    Console.Write(item + ", ");
+}
+if (array_Length % 2 == 1) Console.Write(array[array_Length/2]);
+/**/
+
+Console.WriteLine("Введите последовательность массива через пробел");
+string str = Console.ReadLine();
+
+var arr = str.Split(" ");
+
+int[] arrint = new int[arr.Length];
 
 for (int i = 0; i < arr.Length; i++)
 {
-    arr[i] = rnd.Next(0, 123);
+    arrint[i] = Convert.ToInt32(arr[i]);
 }
-foreach (var item in arr)
+
+foreach (var item in arrint)
 {
-    Console.Write(item + ", ");
+    System.Console.Write(" " + (item + 1));
 }

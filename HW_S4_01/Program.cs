@@ -1,4 +1,10 @@
-﻿int InputIntNumber(string numberName)
+﻿/*
+Задача 25: Напишите цикл, который принимает на вход два числа (A и B) и возводит число A в натуральную степень B.
+3, 5 -> 243 (3⁵)
+2, 4 -> 16
+*/
+/*
+int InputIntNumber(string numberName)
 {
     Console.Write($"Input {numberName} integer number: ");
     int number;
@@ -10,11 +16,6 @@
     return number;
 }
 
-/*
-Задача 25: Напишите цикл, который принимает на вход два числа (A и B) и возводит число A в натуральную степень B.
-3, 5 -> 243 (3⁵)
-2, 4 -> 16
-*/
 Console.WriteLine(
     "Принимает на вход два числа (A и B) и возводит число A в натуральную степень B: "
 );
@@ -33,3 +34,26 @@ else
     }
 
 Console.WriteLine("A^B = " + A_tmp);
+*/
+/*
+решение на основе сдвига двоичного числа
+*/
+Console.WriteLine("Введите степень");
+int n = Math.Abs(Convert.ToInt32(Console.ReadLine()));
+
+Console.WriteLine("Введите число возводимое в степень");
+int x = Math.Abs(Convert.ToInt32(Console.ReadLine()));
+
+string binary = Convert.ToString(n, 2);      // перевод в двоичный код
+string kx_str = binary.Replace("0", "k");    // замена 0 на k
+       kx_str = kx_str.Replace("1", "kx");   // замена 1 на kx
+       kx_str = kx_str.Substring(2);         // отсечение первых двух kx
+int res = x;
+
+foreach (char V in kx_str) // перебор символов строки
+{
+    if (V == 'k') res *= res;
+    else          res *= x;
+}
+Console.WriteLine(res);
+

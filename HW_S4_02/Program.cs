@@ -21,7 +21,7 @@ Console.WriteLine("Программа принимает на вход числ�
 int input_numb = InputIntNumber("N");
 int numb_tmp = Math.Abs(input_numb);
 int sum = 0;
-
+/*
 while (input_numb > 0)
 {
     // Console.Write(input_numb + " ");
@@ -31,4 +31,13 @@ while (input_numb > 0)
     // Console.Write("[[" + input_numb + "]]" + " ");
     // Console.Write("[" + numb_tmp + "]" + " ");
 }
+/*
+другой вариант
+*/
+for (; input_numb > 0; input_numb /=10)
+{
+    // sum += input_numb % 10;
+    sum = sum + input_numb % 10;
+}
+
 Console.WriteLine("sum = " + sum);

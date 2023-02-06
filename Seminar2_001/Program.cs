@@ -42,5 +42,3 @@
 Console.Clear();
 
 int x = Convert.ToInt32(Console.ReadLine());
-int x = Convert.ToInt32(Console.ReadLine());
-

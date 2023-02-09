@@ -24,7 +24,7 @@ foreach (var item in arr_tmp)
 /*
 Вариант на Семинаре 6 от дмитрия
 */
-/**/
+/*
 System.Console.Write("Размер массива: ");
 int len = Convert.ToInt32(Console.ReadLine());
 int[] array = new int[len];

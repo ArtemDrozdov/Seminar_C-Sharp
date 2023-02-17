@@ -56,3 +56,45 @@ SpiralArray2DInt(array2D);
 
 Console.WriteLine("вывод спиральной матрицы");
 PrintArray2DInt(array2D);
+/*
+ВАРИАНТ с рекурсией от Дмитрия
+*/
+/**/
+int count = m * n;
+
+SpiralFillArrayRecurseDima(array2D);
+Console.WriteLine("вывод спиральной матрицы 2");
+PrintArray2DInt(array2D);
+/**/
+void SpiralFillArrayRecurseDima(int[,] array, int a = 0)
+{
+    int m = array.GetLength(0);
+    int n = array.GetLength(1);
+
+    for (int i = 0 + a; i < n - a; i++)
+    {
+        array[0 + a, i] = count;
+        count--;
+        if (count <= 0) return;
+    }
+    for (int j = 1 + a; j < m - a; j++)
+    {
+        array[j, n - 1 - a] = count;
+        count--;
+        if (count <= 0) return;
+    }
+    for (int k = n - 2 - a; k >= 0 + a; k--)
+    {
+        array[m - 1 - a, k] = count;
+        count--;
+        if (count <= 0) return;
+    }
+    for (int l = m - 2 - a; l > 0 + a; l--)
+    {
+        array[l, 0 + a] = count;
+        count--;
+        if (count <= 0) return;
+    }
+    SpiralFillArrayRecurseDima(array, a + 1);
+
+}
